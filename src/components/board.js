@@ -1,4 +1,5 @@
 import List from './list'
+import Card from './card'
 
 function Board () {
   return (
@@ -9,7 +10,23 @@ function Board () {
         </h1>
       </div>
       <main className='flex flex-1 gap-6'>
-        <List />
+        <List title='Todo'>
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+          <Card title='implementar el modal' />
+        </List>
         <List />
         <List />
       </main>
