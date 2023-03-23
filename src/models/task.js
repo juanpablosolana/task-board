@@ -15,7 +15,8 @@ const tasksSchema = new mongoose.Schema({
       }
     }
   ],
-  status: String
+  status: String,
+  date: String
 })
 
 export default mongoose.models.tasks || mongoose.model('tasks', tasksSchema)
