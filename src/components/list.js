@@ -1,10 +1,16 @@
 
 function List ({ title, children }) {
+  const handleDrop = (e) => {
+    console.log(e)
+  }
+  const handleDragOver = (e) => {
+    e.preventDefault()
+  }
   return (
-    <div className='relative flex-1'>
-      <div className='absolute inset-0 flex flex-col flex-1 rounded p-4 bg-slate-300 text-gray-900'>
+    <div className='relative flex-1' onDrop={handleDrop} onDragOver={handleDragOver}>
+      <div className='absolute inset-0 flex flex-col flex-1 p-4 text-gray-900 rounded bg-slate-300'>
         <h2 className='font-bold '>{title}</h2>
-        <div className='flex flex-col gap-4 overflow-auto'>
+        <div className='flex flex-col flex-1 gap-4 overflow-auto'>
           {children}
         </div>
         <div>
