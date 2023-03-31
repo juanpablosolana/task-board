@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-function Card ({ title, user, comments = [] }) {
-  const handlerDragStart = (e) => {
-    console.log(e)
+function Card ({ title, user, comments = [], _id: id, setTaskIdToUpdate }) {
+  const handlerDragStart = () => {
+    setTaskIdToUpdate(id)
   }
   return (
     <div draggable onDragStart={handlerDragStart} className='flex flex-col gap-4 p-2 text-gray-900 bg-white rounded-sm'>

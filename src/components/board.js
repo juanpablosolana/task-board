@@ -1,11 +1,15 @@
 import List from './list'
 import Card from './card'
-import { todoData } from '@/constants/data'
 
-function Board () {
+function Board ({
+  todoData,
+  setTaskIdToUpdate,
+  setTaskStatusToUpdate
+}) {
   const handleDrop = (e) => {
-    console.log(e)
+    setTaskStatusToUpdate(e.target.closest('[data-id]').dataset.id)
   }
+
   return (
     <div className='flex flex-col flex-1 gap-4 p-4 '>
       <div>
@@ -14,14 +18,15 @@ function Board () {
         </h1>
       </div>
       <main className='flex flex-1 gap-6'>
-        <List title='Todo' handleDrop={handleDrop}>
+        <List id='todo' title='Todo' handleDrop={handleDrop}>
           {
             todoData.map((item) => {
               if (item.status === 'todo') {
                 return (
                   <Card
                     {...item}
-                    key={item.id}
+                    key={item._id}
+                    setTaskIdToUpdate={setTaskIdToUpdate}
                   />
                 )
               }
@@ -29,14 +34,15 @@ function Board () {
             })
         }
         </List>
-        <List title='In Progress' handleDrop={handleDrop}>
+        <List id='doing' title='In Progress' handleDrop={handleDrop}>
           {
             todoData.map((item) => {
               if (item.status === 'doing') {
                 return (
                   <Card
                     {...item}
-                    key={item.id}
+                    key={item._id}
+                    setTaskIdToUpdate={setTaskIdToUpdate}
                   />
                 )
               }
@@ -44,14 +50,15 @@ function Board () {
             })
           }
         </List>
-        <List title='Done' handleDrop={handleDrop}>
+        <List id='done' title='Done' handleDrop={handleDrop}>
           {
             todoData.map((item) => {
               if (item.status === 'done') {
                 return (
                   <Card
                     {...item}
-                    key={item.id}
+                    key={item._id}
+                    setTaskIdToUpdate={setTaskIdToUpdate}
                   />
                 )
               }
