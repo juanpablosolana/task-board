@@ -45,6 +45,7 @@ export default function Home () {
         setShowModal={setShowModal}
         modalData={modalData}
         setModalData={setModalData}
+        setTaskHistory={setTaskHistory}
       />
     </Layout>
   )

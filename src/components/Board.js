@@ -9,7 +9,8 @@ function Board ({
   showModal,
   setShowModal,
   modalData,
-  setModalData
+  setModalData,
+  setTaskHistory
 }) {
   const handleDrop = (e) => {
     setTaskStatusToUpdate(e.target.closest('[data-id]').dataset.id)
@@ -81,6 +82,7 @@ function Board ({
           <Modal
             modalData={modalData}
             setShowModal={setShowModal}
+            setTaskHistory={setTaskHistory}
           />}
       </main>
     </div>

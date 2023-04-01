@@ -1,20 +1,34 @@
 import Image from 'next/image'
 
-function Modal ({ setShowModal, modalData }) {
+function Modal ({ setShowModal, modalData, setTaskHistory }) {
   const { title, comments = [], _id: id } = modalData
+
+  const handleUpdate = async () => {
+    const title = document.getElementById('title').value
+    const res = await fetch('/api/taskUpdater', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id, title })
+    })
+    const data = await res.json()
+    setTaskHistory(data)
+    setShowModal(false)
+  }
 
   return (
     <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm'>
       <div className='relative flex flex-col w-3/4 p-4 rounded bg-slate-100'>
         <div className='flex justify-between'>
           <h2 className='text-xl font-bold'>{title}</h2>
-          <span className='text-gray-400' onClick={() => setShowModal(false)}>X</span>
+          <span className='text-gray-400 cursor-pointer' onClick={() => setShowModal(false)}>X</span>
         </div>
         <div className='flex flex-col gap-4 mt-4'>
           <div className='flex flex-col gap-2'>
             <label htmlFor='title'>Editar Título</label>
             <input type='text' name='title' id='title' className='p-2 border border-gray-300 rounded' />
-            <button>
+            <button onClick={handleUpdate}>
               Actualizar
             </button>
           </div>
