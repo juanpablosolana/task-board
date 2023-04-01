@@ -13,6 +13,7 @@ export default function Home () {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    setIsLoading(true)
     fetch('/api/tasks')
       .then((res) => res.json())
       .then((data) => setTodoData(data))
