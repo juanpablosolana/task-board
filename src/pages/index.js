@@ -8,6 +8,8 @@ export default function Home () {
   const [taskIdToUpdate, setTaskIdToUpdate] = useState('')
   const [taskStatusToUpdate, setTaskStatusToUpdate] = useState('')
   const [taskHistory, setTaskHistory] = useState([])
+  const [showModal, setShowModal] = useState(false)
+  const [modalData, setModalData] = useState({ title: 'Prueba', id: '', coments: [] })
 
   useEffect(() => {
     fetch('/api/tasks')
@@ -39,6 +41,10 @@ export default function Home () {
         setTaskIdToUpdate={setTaskIdToUpdate}
         taskStatusToUpdate={taskStatusToUpdate}
         setTaskStatusToUpdate={setTaskStatusToUpdate}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        modalData={modalData}
+        setModalData={setModalData}
       />
     </Layout>
   )

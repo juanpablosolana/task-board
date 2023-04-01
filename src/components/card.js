@@ -1,8 +1,13 @@
 import Image from 'next/image'
 
-function Card ({ title, user, comments = [], _id: id, setTaskIdToUpdate }) {
+function Card ({ title, user, comments = [], _id: id, setTaskIdToUpdate, setModalData, setShowModal }) {
   const handlerDragStart = () => {
     setTaskIdToUpdate(id)
+  }
+
+  const handlerClick = () => {
+    setModalData({ title, comments, _id: id })
+    setShowModal(true)
   }
   return (
     <div draggable onDragStart={handlerDragStart} className='flex flex-col gap-4 p-2 text-gray-900 bg-white rounded-sm'>
@@ -11,7 +16,7 @@ function Card ({ title, user, comments = [], _id: id, setTaskIdToUpdate }) {
           {title}
         </p>
         <span>
-          <Image src='/edit.svg' alt='emoji' width={20} height={20} />
+          <Image src='/edit.svg' alt='emoji' width={20} height={20} onClick={handlerClick} />
         </span>
       </div>
       <div className='flex justify-between'>

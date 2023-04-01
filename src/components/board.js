@@ -1,10 +1,15 @@
 import List from './list'
 import Card from './card'
+import Modal from './modal'
 
 function Board ({
   todoData,
   setTaskIdToUpdate,
-  setTaskStatusToUpdate
+  setTaskStatusToUpdate,
+  showModal,
+  setShowModal,
+  modalData,
+  setModalData
 }) {
   const handleDrop = (e) => {
     setTaskStatusToUpdate(e.target.closest('[data-id]').dataset.id)
@@ -27,6 +32,8 @@ function Board ({
                     {...item}
                     key={item._id}
                     setTaskIdToUpdate={setTaskIdToUpdate}
+                    setModalData={setModalData}
+                    setShowModal={setShowModal}
                   />
                 )
               }
@@ -43,6 +50,8 @@ function Board ({
                     {...item}
                     key={item._id}
                     setTaskIdToUpdate={setTaskIdToUpdate}
+                    setModalData={setModalData}
+                    setShowModal={setShowModal}
                   />
                 )
               }
@@ -59,6 +68,8 @@ function Board ({
                     {...item}
                     key={item._id}
                     setTaskIdToUpdate={setTaskIdToUpdate}
+                    setModalData={setModalData}
+                    setShowModal={setShowModal}
                   />
                 )
               }
@@ -66,6 +77,11 @@ function Board ({
             })
           }
         </List>
+        {showModal &&
+          <Modal
+            modalData={modalData}
+            setShowModal={setShowModal}
+          />}
       </main>
     </div>
   )
