@@ -39,7 +39,7 @@ function Board ({
               }
               return null
             })
-        }
+          }
         </List>
         <List id='doing' title='In Progress' handleDrop={handleDrop}>
           {

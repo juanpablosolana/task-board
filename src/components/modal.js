@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-function Task ({ setShowModal, modalData }) {
+function Modal ({ setShowModal, modalData }) {
   const { title, comments = [], _id: id } = modalData
 
   return (
@@ -42,4 +42,4 @@ function Task ({ setShowModal, modalData }) {
   )
 }
 
-export default Task
+export default Modal
