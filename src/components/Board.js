@@ -1,6 +1,7 @@
 import List from './List'
 import Card from './Card'
 import Modal from './Modal'
+import Loading from './Loading'
 
 function Board ({
   todoData,
@@ -10,7 +11,8 @@ function Board ({
   setShowModal,
   modalData,
   setModalData,
-  setTaskHistory
+  setTaskHistory,
+  isLoading
 }) {
   const handleDrop = (e) => {
     setTaskStatusToUpdate(e.target.closest('[data-id]').dataset.id)
@@ -25,8 +27,9 @@ function Board ({
       </div>
       <main className='flex flex-1 gap-6'>
         <List id='todo' title='Todo' handleDrop={handleDrop}>
-          {
-            todoData.map((item) => {
+          {isLoading
+            ? <Loading />
+            : todoData.map((item) => {
               if (item.status === 'todo') {
                 return (
                   <Card
@@ -39,12 +42,12 @@ function Board ({
                 )
               }
               return null
-            })
-          }
+            })}
         </List>
         <List id='doing' title='In Progress' handleDrop={handleDrop}>
-          {
-            todoData.map((item) => {
+          {isLoading
+            ? <Loading />
+            : todoData.map((item) => {
               if (item.status === 'doing') {
                 return (
                   <Card
@@ -57,12 +60,12 @@ function Board ({
                 )
               }
               return null
-            })
-          }
+            })}
         </List>
         <List id='done' title='Done' handleDrop={handleDrop}>
-          {
-            todoData.map((item) => {
+          {isLoading
+            ? <Loading />
+            : todoData.map((item) => {
               if (item.status === 'done') {
                 return (
                   <Card
@@ -75,8 +78,7 @@ function Board ({
                 )
               }
               return null
-            })
-          }
+            })}
         </List>
         {showModal &&
           <Modal

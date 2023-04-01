@@ -10,15 +10,18 @@ export default function Home () {
   const [taskHistory, setTaskHistory] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [modalData, setModalData] = useState({ title: 'Prueba', id: '', coments: [] })
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     fetch('/api/tasks')
       .then((res) => res.json())
       .then((data) => setTodoData(data))
+      .finally(() => setIsLoading(false))
   }, [taskHistory])
 
   useEffect(() => {
     if (taskIdToUpdate !== '' && taskStatusToUpdate !== '') {
+      setIsLoading(true)
       fetch('/api/taskUpdater', {
         method: 'PUT',
         headers: {
@@ -29,6 +32,7 @@ export default function Home () {
         .then((res) => res.json())
         .then((data) => setTaskHistory(data))
         .catch((err) => console.log(err))
+        .finally(() => setIsLoading(false))
     }
   }, [taskIdToUpdate, taskStatusToUpdate])
 
@@ -46,6 +50,7 @@ export default function Home () {
         modalData={modalData}
         setModalData={setModalData}
         setTaskHistory={setTaskHistory}
+        isLoading={isLoading}
       />
     </Layout>
   )
