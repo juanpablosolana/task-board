@@ -1,6 +1,6 @@
-import Layout from '@/components/layout'
-import Header from '@/components/header'
-import Board from '@/components/board'
+import Layout from '@/components/Layout'
+import Header from '@/components/Header'
+import Board from '@/components/Board'
 import { useEffect, useState } from 'react'
 
 export default function Home () {

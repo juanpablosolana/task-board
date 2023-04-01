@@ -1,6 +1,6 @@
-import List from './list'
-import Card from './card'
-import Modal from './modal'
+import List from './List'
+import Card from './Card'
+import Modal from './Modal'
 
 function Board ({
   todoData,
