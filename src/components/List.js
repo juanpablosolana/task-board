@@ -1,7 +1,19 @@
 
-function List ({ title, children, handleDrop, id }) {
+function List ({ title, children, handleDrop, id, setTaskHistory }) {
   const handleDragOver = (e) => {
     e.preventDefault()
+  }
+  const handleUpdate = () => {
+    fetch('/api/taskGenerator', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title: document.getElementById(id).value, status: id })
+    })
+      .then((res) => res.json())
+      .then((data) => setTaskHistory(data), document.getElementById(id).value = '')
+      .catch((err) => console.log(err))
   }
   return (
     <div data-id={id} className='relative flex-1' onDrop={handleDrop} onDragOver={handleDragOver}>
@@ -10,9 +22,13 @@ function List ({ title, children, handleDrop, id }) {
         <div className='flex flex-col flex-1 gap-4 overflow-auto'>
           {children}
         </div>
-        <div>
-          añadir otra tarjeta
-        </div>
+        <details className='flex flex-row '>
+          <summary className='cursor-pointer'>Añada otra tarjeta</summary>
+          <input type='text' name='newTask' id={id} className='p-2 border border-gray-300 rounded' />
+          <button onClick={handleUpdate} className='p-2 my-2 rounded-lg bg-sky-500 text-cyan-50'>
+            Añada otra tarjeta
+          </button>
+        </details>
       </div>
     </div>
   )

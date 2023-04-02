@@ -26,7 +26,12 @@ function Board ({
         </h1>
       </div>
       <main className='flex flex-1 gap-6'>
-        <List id='todo' title='Todo' handleDrop={handleDrop}>
+        <List
+          id='todo'
+          title='Todo'
+          handleDrop={handleDrop}
+          setTaskHistory={setTaskHistory}
+        >
           {isLoading
             ? <Loading />
             : todoData.map((item) => {
@@ -44,7 +49,12 @@ function Board ({
               return null
             })}
         </List>
-        <List id='doing' title='In Progress' handleDrop={handleDrop}>
+        <List
+          id='doing'
+          title='In Progress'
+          handleDrop={handleDrop}
+          setTaskHistory={setTaskHistory}
+        >
           {isLoading
             ? <Loading />
             : todoData.map((item) => {
@@ -62,7 +72,12 @@ function Board ({
               return null
             })}
         </List>
-        <List id='done' title='Done' handleDrop={handleDrop}>
+        <List
+          id='done'
+          title='Done'
+          handleDrop={handleDrop}
+          setTaskHistory={setTaskHistory}
+        >
           {isLoading
             ? <Loading />
             : todoData.map((item) => {
