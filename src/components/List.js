@@ -23,7 +23,7 @@ function List ({ title, children, handleDrop, id, setTaskHistory }) {
           {children}
         </div>
         <details className='flex flex-row '>
-          <summary className='cursor-pointer'>Añada otra tarjeta</summary>
+          <summary className='text-gray-700 cursor-pointer'>Añada otra tarjeta</summary>
           <input type='text' name='newTask' id={id} className='p-2 border border-gray-300 rounded' />
           <button onClick={handleUpdate} className='p-2 my-2 rounded-lg bg-sky-500 text-cyan-50'>
             Añada otra tarjeta
